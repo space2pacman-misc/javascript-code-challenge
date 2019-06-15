@@ -95,20 +95,7 @@ Vue.component("task", {
 		switchTab(tab) {
 			this.$root.switchTab(tab)
 		},
-		firstTest() {
-			var data = this.item.tests[0].input;
-			var output = this.item.tests[0].output;
-			var input;
-
-			if(typeof data === "string") data = "'" + data + "'";
-
-			input = eval(this.content + this.item.function.name + "(" + data + ")")
-
-			this.$root.tab = "result";
-			this.testResults = [];
-			this.testResults.push({ return: input, output: output, status: input === output ? true : false });
-		},
-		allTests() {
+		runTests() {
 			var data;
 			var output;
 			var input;

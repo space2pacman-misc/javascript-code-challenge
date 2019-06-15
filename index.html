@@ -76,7 +76,7 @@
 		<div class="uk-width-1-1 uk-width-1-2@m">
 			<ul class="uk-child-width-expand uk-margin-top" uk-tab>
 			    <li :class="this.$root.tab === 'task' && 'uk-active'" v-on:click="switchTab('task')"><a href="">Задание</a></li>
-			    <li :class="this.$root.tab === 'result' && 'uk-active'" v-on:click="switchTab('result')"><a href="">Результат тестов</a></li>
+			    <li :class="this.$root.tab === 'result' && 'uk-active'" v-on:click="switchTab('result')"><a href="">Результат</a></li>
 			</ul>
 			<div v-show="this.$root.tab === 'task'">
 				<h3 class="uk-margin-top">{{ item.caption }}</h3>
@@ -114,11 +114,8 @@
 			<editor identifier="code" :item="item" :index="$route.params.id" class="uk-margin-top"></editor>
 			<div class="uk-margin-top">
 				<div class="uk-margin-remove" uk-grid>
-					<div class="uk-width-1-2 uk-padding-remove">
-						<div class="uk-button uk-button-default uk-button-large uk-width-1-1" v-on:click="firstTest">Проверка (1 тест)</div>
-					</div>
-					<div class="uk-width-1-2 uk-padding-remove">
-						<div class="uk-button uk-button-default uk-button-large uk-width-1-1" v-on:click="allTests">Запуск (Все тесты)</div>
+					<div class="uk-width-1-1 uk-padding-remove">
+						<div class="uk-button uk-button-default uk-button-large uk-width-1-1" v-on:click="runTests">Запуск кода</div>
 					</div>
 				</div>
 			</div>
