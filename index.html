@@ -98,10 +98,18 @@
 				<h3 class="uk-margin-top">Результат тестов</h3>
 				<div class="status-test" uk-grid>
 					<div class="uk-width-1-2 status-test__message">
-						<div class="uk-alert uk-alert-success">Успешыне: {{ test.success }}</div>
+						<div class="uk-alert uk-alert-success">
+							<span class="uk-hidden@s" uk-icon="check"></span>
+							<span class="uk-visible@s">Успешыне</span>
+							: {{ test.success }}
+						</div>
 					</div>
 					<div class="uk-width-1-2 status-test__message">
-						<div class="uk-alert uk-alert-danger">Не успешные: {{ test.fail }}</div>
+						<div class="uk-alert uk-alert-danger">
+							<span class="uk-hidden@s" uk-icon="close"></span>
+							<span class="uk-visible@s">Не успешыне</span>
+							: {{ test.fail }}
+						</div>
 					</div>
 				</div>
 				<div class="uk-card uk-card-default uk-margin-top uk-margin-bottom uk-padding-small uk-text-small" v-if="test.results">
