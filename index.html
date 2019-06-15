@@ -96,14 +96,22 @@
 			</div>
 			<div v-show="this.$root.tab === 'result'">
 				<h3 class="uk-margin-top">Результат тестов</h3>
-				<div class="uk-card uk-card-default uk-margin-top uk-margin-bottom uk-padding-small uk-text-small" v-if="testResults">
-					<div v-for="(testResult, index) in testResults" :class="testResult.status ? 'uk-alert-success' : 'uk-alert-danger'">
-						<div :class="index >= testResults.length - 1 || 'uk-margin-bottom'" class="uk-padding-small">
+				<div class="status-test" uk-grid>
+					<div class="uk-width-1-2 status-test__message">
+						<div class="uk-alert uk-alert-success">Успешыне: {{ test.success }}</div>
+					</div>
+					<div class="uk-width-1-2 status-test__message">
+						<div class="uk-alert uk-alert-danger">Не успешные: {{ test.fail }}</div>
+					</div>
+				</div>
+				<div class="uk-card uk-card-default uk-margin-top uk-margin-bottom uk-padding-small uk-text-small" v-if="test.results">
+					<div v-for="(result, index) in test.results" :class="result.status ? 'uk-alert-success' : 'uk-alert-danger'">
+						<div :class="index >= test.results.length - 1 || 'uk-margin-bottom'" class="uk-padding-small">
 							<div>
-								<span>Ожидается:</span> {{ testResult.output }}
+								<span>Ожидается:</span> {{ result.output }}
 							</div>
 							<div>
-								<span>Вывод:</span> {{ testResult.return }}
+								<span>Вывод:</span> {{ result.return }}
 							</div>
 						</div>
 					</div>

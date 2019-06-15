@@ -83,7 +83,11 @@ Vue.component("task", {
 	data() {
 		return {
 			content: null,
-			testResults: null
+			test: {
+				results: null,
+				success: 0,
+				fail: 0
+			}
 		}
 	},
 	created() {
@@ -99,9 +103,12 @@ Vue.component("task", {
 			var data;
 			var output;
 			var input;
+			var status
 
 			this.$root.tab = "result";
-			this.testResults = [];
+			this.test.results = [];
+			this.test.success = 0;
+			this.test.fail = 0;
 
 			this.item.tests.forEach(test => {
 				data = test.input;
@@ -110,11 +117,19 @@ Vue.component("task", {
 
 				input = eval(this.content + this.item.function.name + "(" + data + ")");
 				output = test.output;
+
+				if(input === output) {
+					status = true;
+					this.test.success++;
+				} else {
+					status = false;
+					this.test.fail++;
+				}
 				
-				this.testResults.push({ return: input, output: output, status: input === output ? true : false });
+				this.test.results.push({ return: input, output: output, status: status });
 			})
 			// check all test
-			//console.log(this.testResults.every(i => i.status))
+			//console.log(this.test.results.every(i => i.status))
 		}
 	}
 })

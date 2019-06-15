@@ -41,6 +41,14 @@ body {
   font-size: .875rem;
 }
 
+.status-test {
+  margin-left: -20px;
+}
+
+.status-test__message {
+  padding-left: 20px;
+}
+
 /* VUE SLIDE */
 
 .slide-enter-active {
